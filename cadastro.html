@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastro.css">
+    <title>Cadastrar</title>
+</head>
+<body>
+    <main>
+        <img id="img-fundo" src="/imagens/fundo.png" alt="imagem fundo">
+        
+        <section id="section-formulario">
+            <img src="/imagens/escrita.png" alt="Logo escrita" id="logo">
+            <form id="formulario-cadastro">
+                <input type="text" id="nome-novo-usuario" name="nome-novo-usuario" placeholder="Nome de usuário" required>
+                <input type="password" id="senha-novo-usuario" name="senha-novo-usuario" placeholder="Senha" required>
+                <input type="password" id="conferir-senha-novo-usuario" name="conferir-senha-novo-usuario" placeholder="Confirmar senha" required>
+                <button type="submit" id="submit">Cadastrar</button>
+            </form>
+            <h1 id="titulo">Crie sua conta!</h1>
+            <div id="div-feedback">
+                <span id="feedback">
+                </span>
+            </div>
+        </section>
+    </main>
+
+    <script src="/cadastro.js"></script>
+</body>
+</html>

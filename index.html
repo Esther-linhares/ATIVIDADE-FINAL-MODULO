@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Recados</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        </style>
+</head>
+<body>
+    <main>
+        <img id="img-fundo" src="/imagens/fundo.png" alt="imagem fundo">
+        
+        <section id="section-formulario">
+            <img src="/imagens/escrita.png" alt="Logo escrita" id="logo">
+            <h1 id="titulo">Entre na sua conta!</h1>
+            <form id="formulario-entrar">
+                <input type="text" id="nome-usuario" name="nome-usuario" placeholder="Nome de usuário" required><br>
+                <input type="password" id="senha-usuario" name="senha-usuario" placeholder="Senha" required><br>
+                <button type="submit" id="submit">Entrar</button>
+            </form>
+            <h1 id="titulo">Entre na sua conta!</h1>
+            <div id="div-feedback">
+                <span id="feedback"></span>
+            </div>
+            <p id="pagina-cadastro">ainda nao tem uma conta? <a href="/cadastro.html">criar conta</a></p>
+        </section>
+    </main>
+    <script src="/index.js"></script>
+
+
+</body>
+</html>
