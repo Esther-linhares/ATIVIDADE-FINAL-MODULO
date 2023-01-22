@@ -11,12 +11,18 @@
 </head>
 
 <body>
+    
     <main>
+        <section id="section-titulo">
+            <img src="./imagens/meusRecados.png" id="titulo">
+           <i id="icon-sair" onclick="sair()" class="bi bi-box-arrow-left fa-lg"></i>
+    
+        </section>
         <section id="section-formulario">
             <form id="formularioRecados">
                 <input type="text" name="descricao" id="descricao" placeholder="Descrição" required>
                 <input type="text" name="detalhamento" id="detalhamento" placeholder="Detalhamento" required>
-                <button type="submit" name="submit" id="submit"></button>
+                <button type="submit" name="submit" id="submit"><i class="bi bi-check-circle-fill"></i></button>
             </form>
             <span id="aviso"></span>
         </section>
@@ -36,10 +42,6 @@
 
             </table>
         </section>
-        <section>
-            <button id="botao-sair" onclick="sair()"><i id="icon-sair" class="bi bi-box-arrow-left"></i></button>
-        </section>
-
         <section id="section-atualizar">
             
         </section>

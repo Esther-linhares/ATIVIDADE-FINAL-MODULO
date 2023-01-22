@@ -2,6 +2,15 @@ const listaUsuario = buscarDadosLocalStorage('cadastros')
 
 
 const feedbackHTML = window.document.getElementById('feedback')
+const usuarioLogado =  buscarDadosLocalStorage('usuarioLogado')
+document.addEventListener('DOMContentLoaded',  () => {
+
+    if(usuarioLogado.nome){
+        window.location.href = 'listaRecados.html'
+        return
+    } 
+}) 
+
 const formularioEntrarHTML = window.document.getElementById('formulario-entrar')
 
 formularioEntrarHTML.addEventListener('submit', (ev) => {
@@ -21,10 +30,6 @@ formularioEntrarHTML.addEventListener('submit', (ev) => {
         feedbackHTML.innerHTML = ''
     })
 
-
-    //como pegar o usuario la no localStorage e verificar a senha?
-    //como listar recados feitos anteriormente?
-
     const usuarioLogado = listaUsuario.find((valor) => valor.nome === inputnome.value && valor.senha === inputsenha.value)
   
     if(!usuarioLogado){
@@ -36,7 +41,7 @@ formularioEntrarHTML.addEventListener('submit', (ev) => {
 
     formularioEntrarHTML.reset()
 
-    setTimeout( () => { window.location.href = 'listaRecados.html' } , 2000)
+    setTimeout( () => { window.location.href = 'listaRecados.html' } , 1000)
    
 })
 
@@ -45,8 +50,6 @@ function guardarLocalStorage(chave, valor){
 
     localStorage.setItem(chave, valorJSON)
 }
-
-
 
 
 function buscarDadosLocalStorage(chave){

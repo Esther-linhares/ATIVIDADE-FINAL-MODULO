@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded',  () => {
         window.location.href = 'index.html'
         return
     } else{
-        console.log(usuarioLogado)
         mostrarRecados()
     }
 }) 
@@ -16,6 +15,8 @@ const listaRecados = usuarioLogado.recados
 const formulario = document.getElementById('formularioRecados')
 
 const tbody = document.getElementById('recados')
+
+const sectionAtualizar = document.getElementById('section-atualizar')
 
 formulario.addEventListener('submit', (evento) => {
     evento.preventDefault()
@@ -32,8 +33,10 @@ formulario.addEventListener('submit', (evento) => {
 
     const aviso = document.getElementById('aviso')
 
-    if(listaRecados.length == 14){
+    if(listaRecados.length == 15){
         aviso.innerHTML = 'Você atingiu o número máximo de recados, exclua algum para continuar adicionando!'
+        setTimeout( () => { aviso.innerHTML = '' } , 2500)
+   
         return
     }
 
@@ -61,24 +64,30 @@ function mostrarRecados(){
         <td>${index + 1}</td>
         <td>${valor.descricao}</td>
         <td>${valor.detalhamento}</td>
-        <td>
-            <button onclick="apagar(${index})">Apagar</button>
-            <button onclick="editar(${index})">Editar</button>
+        <td id="td">
+            <button id="apagar" onclick="apagar(${index})"><i class="bi bi-trash3-fill"></i></button>
+            <button id="editar" onclick="editar(${index})"><i class="bi bi-patch-plus-fill"></i></button>
         </td>
     </tr>`
     })
 }
+function fechar(){
+    sectionAtualizar.innerHTML =''
+}
 
 function editar (indice){
-    const sectionAtualizar = document.getElementById('section-atualizar')
+    
 
     sectionAtualizar.innerHTML += 
     `<div id="div-atualizar">
         <form id="formulario-atualizar">
+        <h1 id="titulo-editar">Edite seu recado!</h1>
             <input type="text" name="atualizar-descricao" id="atualizar-descricao" placeholder="Atualizar Descrição" required>
             <input type="text" name="atualizar-detalhamento" id="atualizar-detalhamento" placeholder="Atualizar Detalhamento" required>
-            <button type="submit" name="submit" id="submit-atualizar">Atualizar</button>
+            <button type="submit" id="submit-atualizar">Atualizar</button>
+            <span id="feedback"></span>
         </form>
+        <button onclick="fechar()" id="fechar">Fechar</button>
     </div>`
 
     const formulario = document.getElementById('formulario-atualizar')
@@ -86,27 +95,43 @@ function editar (indice){
     formulario.addEventListener('submit', (evento) => {
         evento.preventDefault()
 
-        const descricaoAtualizada = document.getElementById('atualizar-descricao').value
-        const detalhamentoatualizadi = document.getElementById('atualizar-detalhamento').value
+        const descricaoAtualizada = document.getElementById('atualizar-descricao')
+
+        descricaoAtualizada.addEventListener('focus', () => {
+            feedback.innerHTML = ''
+        })
     
-        listaRecados[indice].descricao = descricaoAtualizada
-        listaRecados[indice].detalhamento = detalhamentoatualizadi
+        const detalhamentoatualizadi = document.getElementById('atualizar-detalhamento')
+
+        const feedback = document.getElementById('feedback')
+
+        listaRecados[indice].descricao = descricaoAtualizada.value
+        listaRecados[indice].detalhamento = detalhamentoatualizadi.value
 
         salvarRecados()
 
         mostrarRecados()
 
         sectionAtualizar.innerHTML =''
-        
     })
 }
 
+function apagar(indice){
+    usuarioLogado.recados.splice(indice, 1)
+
+    const remover = document.getElementById(indice)
+    remover.remove()
+
+    salvarRecados()
+    mostrarRecados()
+}
 
 function guardarLocalStorage(chave, valor){
     const valorJSON = JSON.stringify(valor)
 
     localStorage.setItem(chave, valorJSON)
 }
+
 function buscarDadosLocalStorage(chave){
 
     const dadoJSON = localStorage.getItem(chave)
@@ -140,5 +165,3 @@ function salvarRecados(){
     guardarLocalStorage('usuarioLogado', usuarioLogado)
     guardarLocalStorage('cadastros', listaUsuario)
 }
-//colocar botão de sair do logado
-//removeItem

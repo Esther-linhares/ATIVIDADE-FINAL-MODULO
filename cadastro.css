@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-       
+
 body{
     width: 100vw;
     height: 100vh;
@@ -8,11 +7,10 @@ body{
     position: relative;
     overflow-x: hidden;
     overflow-y: hidden;
+    background-image: url(./imagens/fundo.png);
+    background-size: cover;
 }
-#img-fundo{
-    width: 100vw;
-    height: 100vh;
-}
+
 
 #logo{
     width: 310px;
@@ -78,9 +76,9 @@ body{
 }
 #feedback{
     position: absolute;
-    bottom: 29%;
+    bottom: 31%;
     left: 33%;
-    font-size: 13px;
+    font-size: 14px;
     color: red;
 }
 
@@ -97,4 +95,25 @@ body{
     left: 37%;
     font-family: 'Poppins', sans-serif;
     font-size: 30px;
+}
+
+#div{
+    background-color: #0000009d;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+}
+#div2{
+    background-color: #acd2a7;
+    width: 300px;
+    height: 100px;
+    border-radius: 20px;
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 150px);
+}
+#p{
+    position: absolute;
+    top: calc(50% - 29px);
+    left: calc(50% - 105px);
 }
